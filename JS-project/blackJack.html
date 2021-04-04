@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackjack "21"</title>
+    <link rel="stylesheet" type="text/css" href="blackjackStyle.css">
+</head>
+
+<body>
+    <h1>Blackjack "21"</h1>
+    <h3>Cards on the Table:</h3> 
+    <div id="dealer-cards"></div>
+    <br>
+    <div id="player-cards"></div>
+    <br>
+    
+    <form name="blackjack" onSubmit="newGame(); return false;">
+        <input type='submit' id='new-game-button' value='Deal' />
+        <input type='button' id='hit-button' value='Hit' onclick='hit();' disabled />
+        <!-- Best to disable the buttons when they aren't needed. -->
+        <input type='button' id='stand-button' value='Stand' onclick='stand();' disabled />
+        <br>
+        <br>
+        <div id=player-money></div>
+        <p><strong>Bet:</strong></p>
+        <input type='number' id='bet' value='10' min='1' max="100"/>
+    </form>
+    <br>
+    Score:
+    <div id="player-score"></div>
+    <div id="dealer-score"></div>
+    <br>
+    <h2 id="message-board"></h2>
+    <script src="scriptBlackjack.js"></script>
+    <!-- For some reason, this only works if I put the script tag here instead of the head. -->
+</body>
+
+</html>
