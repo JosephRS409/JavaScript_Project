@@ -28,8 +28,8 @@ var deck = {
     // You'll need to make your suits and values.
     initialize: function () {
         var suitArray, rankArray, s, r;
-        suitArray = ["clubs", "diamonds", "hearts", "spades"];
-        rankArray = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"];
+        suitArray = ["Clubs", "Diamonds", "Hearts", "Spades"];
+        rankArray = [2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King", "Ace"];
         for (s = 0; s < suitArray.length; s += 1) {
             for (r = 0; r < rankArray.length; r += 1) {
                 this.deckArray[s * 13 + r] = {
@@ -63,9 +63,9 @@ function getCardsValue(a) {
         aceCount = 0;
     cardArray = a;
     for (i; i < cardArray.length; i += 1) {
-        if (cardArray[i].rank === "J" || cardArray[i].rank === "Q" || cardArray[i].rank === "K") {
+        if (cardArray[i].rank === "Jack" || cardArray[i].rank === "Queen" || cardArray[i].rank === "King") {
             sum += 10;
-        } else if (cardArray[i].rank === "A") {
+        } else if (cardArray[i].rank === "Ace") {
             sum += 11;
             aceCount += 1;
         } else {
