@@ -56,7 +56,7 @@ deck.shuffle();
 // Yay, I have a deck!
 
 // What value do the cards have? (Dealer vs. Player)
-function getCardsValue(a) {
+function getCardsValue(a) { //input is a card value
     var cardArray = [],
         sum = 0,
         i = 0,
@@ -80,6 +80,7 @@ function getCardsValue(a) {
 }
 
 // "Place your bets down ladies and gentlemen."
+// Collects the bet. Determines money amount gained or lost.
 function bet(outcome) {
     var playerBet = document.getElementById("bet").valueAsNumber;
     if (outcome === "win") {
@@ -91,6 +92,7 @@ function bet(outcome) {
 }
 
 // Time to reset the game. Except your money.
+// Set up buttons and deck.
 function resetGame() {
     numCardsPulled = 0;
     player.cards = [];
@@ -107,6 +109,7 @@ function resetGame() {
 }
 
 // The Gameplay Function (Lose or Win $?)
+// Conditions of Game
 function gameplay() {
     if (player.score === 21) { // Very nice. This is a "natural."
         document.getElementById("message-board").innerHTML = "You win! You got a Blackjack/natural!" + "<br>" + "click Deal to keep playing";
@@ -156,12 +159,40 @@ function gameplay() {
     }
 }
 
+//Prettify Function
+function cardPrettify(oneCard) {
+    //takes a card and returns it as a string.
+    //console.log(oneCard);
+    var suity = oneCard.suit;
+    //console.log(suity);
+    let dankRank = oneCard.rank;
+    //console.log(dankRank);
+    //console.log("The " + dankRank + " of " + suity); // These are the same things
+    //console.log(`The ${dankRank} of ${suity}`); // These are the same things
+    return `The ${dankRank} of ${suity}`;
+}
+
 // The Dealer's Function
 function dealerDraw() {
     dealer.cards.push(deck.deckArray[numCardsPulled]);
     dealer.score = getCardsValue(dealer.cards);
-    document.getElementById("dealer-cards").innerHTML = "Dealer Cards: " + JSON.stringify(dealer.cards); // This is a new one for me.
-    document.getElementById("dealer-score").innerHTML = "Dealer Score: " + dealer.score;
+    something = "";
+    var dealersCards = dealer.cards.map(cardPrettify)
+    //dealersCards.forEach(function(currentCardValue){
+    //    something += `${currentCardValue}, `;
+    //}); // forEach takes a card parameter and appends it to a string that we need to append.
+    console.log(something);
+
+    console.log(dealersCards);
+    // Make the objects in the deckArray and turn them into a string other than stringify.
+    document.getElementById("dealer-cards").innerHTML = "Dealer Cards: " + something;
+
+    //document.getElementById("dealer-cards").innerHTML = "Dealer Cards: " + JSON.stringify(dealer.cards); // Takes an object and turns it into a string.
+    
+    // This makes it print weird by turning everything in the function into a string.  Hence we get the ugly brackets and braces.
+    // Use foreach or map
+    // take out rank and string 
+    // set them to a variable
     numCardsPulled += 1;
 }
 
